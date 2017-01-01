@@ -1,0 +1,74 @@
+{
+  "name": "vscode-jmespath",
+  "displayName": "JMESPath for VSCode",
+  "description": "Evaluate JMESPath queries within Visual Studio Code",
+  "version": "0.0.1",
+  "main": "./out/src/jmespathMain",
+  "scripts": {
+    "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/sinon": "^1.16.34",
+    "chai": "^3.5.0",
+    "sinon": "^1.17.7",
+    "tslint": "^4.2.0",
+    "typescript": "^2.1.4",
+    "vscode": "^0.11.0"
+  },
+  "dependencies": {
+    "jmespath": "^0.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/j--wong/vscode-jmespath.git"
+  },
+  "publisher": "joshwong",
+  "icon": "images/jemspath.png",
+  "galleryBanner": {
+    "color": "#13254a",
+    "theme": "dark"
+  },
+  "private": true,
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "jmespath",
+    "json",
+    "query"
+  ],
+  "activationEvents": [
+    "onLanguage:json",
+    "onCommand:jmespath.query"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "title": "JMESPath: Query JSON",
+        "command": "jmespath.query"
+      }
+    ],
+    "configuration": {
+      "title": "",
+      "properties": {
+        "jmespath.rememberRecentExpressions": {
+          "type": "boolean",
+          "default": true,
+          "description": "Specify whether or not to record recently entered expressions"
+        },
+        "jmespath.maxRecentExpressionsToRemember": {
+          "type": "integer",
+          "default": 25,
+          "description": "Specify the number of expressions to remember"
+        }
+      }
+    }
+  }
+}

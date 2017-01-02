@@ -1,14 +1,14 @@
+"use strict";
+
 import * as vscode from "vscode";
 let jmespath = require("jmespath");
 
-let outputChannel = vscode.window.createOutputChannel("JMESPath Output");
-
-export function queryJson(context: vscode.ExtensionContext) {
+export function queryJson(context: vscode.ExtensionContext, outputChannel: vscode.OutputChannel): PromiseLike<void> {
 	let editor = vscode.window.activeTextEditor;
 
 	if (editor.document.languageId !== "json") {
 		vscode.window.showInformationMessage("Please open a JSON document.");
-		return;
+		return Promise.resolve();
 	}
 
 	let options: vscode.InputBoxOptions = {
@@ -16,9 +16,10 @@ export function queryJson(context: vscode.ExtensionContext) {
 		placeHolder: "JMESPath expression"
 	};
 
-	vscode.window.showInputBox(options).then((expression) => {
-		if (expression.trim().length === 0) {
-			return;
+	return vscode.window.showInputBox(options).then((expression) => {
+		if (expression === undefined || expression.trim().length === 0) {
+			vscode.window.showInformationMessage("Please enter a valid JMESPath expression.");
+			return Promise.resolve();
 		}
 
 		try {
@@ -26,7 +27,7 @@ export function queryJson(context: vscode.ExtensionContext) {
 		}
 		catch (e) {
 			vscode.window.showErrorMessage(`${e.message}`);
-			return;
+			return Promise.resolve();
 		}
 
 		let data = vscode.window.activeTextEditor.document.getText();
@@ -39,7 +40,7 @@ export function queryJson(context: vscode.ExtensionContext) {
 			outputChannel.show();
 		} catch (e) {
 			vscode.window.showErrorMessage(`${e.message}`);
-			return;
+			return Promise.resolve();
 		}
 	});
 }

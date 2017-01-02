@@ -2,6 +2,7 @@
   "name": "vscode-jmespath",
   "displayName": "JMESPath for VSCode",
   "description": "Evaluate JMESPath queries within Visual Studio Code",
+  "icon": "images/jmespath.png",
   "version": "0.0.1",
   "main": "./out/src/jmespathMain",
   "scripts": {
@@ -27,7 +28,9 @@
     "url": "https://github.com/j--wong/vscode-jmespath.git"
   },
   "publisher": "joshwong",
-  "icon": "images/jemspath.png",
+  "author": {
+    "name": "Josh Wong"
+  },
   "galleryBanner": {
     "color": "#13254a",
     "theme": "dark"

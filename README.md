@@ -25,6 +25,10 @@ To use the extension:
 
 ## Release Notes
 
+### 0.0.4
+
+- Fix keyboard shortcut on Mac
+
 ### 0.0.3
 
 - Added keyboard shortcut `cmd+j q` on Mac and `ctrl+j q` on Windows

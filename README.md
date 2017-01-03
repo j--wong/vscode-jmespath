@@ -25,6 +25,15 @@ To use the extension:
 
 ## Release Notes
 
+### 0.0.3
+
+- Added keyboard shortcut `cmd+j q` on Mac and `ctrl+j q` on Windows
+- Added expression validation
+
+### 0.0.2
+
+- Ensured expression result is displayed in the same output window instead of creating new ones each time
+
 ### 0.0.1
 
 - Initial release

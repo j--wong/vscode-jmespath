@@ -17,7 +17,10 @@ export function queryJson(context: vscode.ExtensionContext, outputChannel: vscod
 	};
 
 	return vscode.window.showInputBox(options).then((expression) => {
-		if (expression === undefined || expression.trim().length === 0) {
+		if (expression === undefined) {
+			return Promise.resolve();
+		}
+		if (expression.trim().length === 0) {
 			vscode.window.showInformationMessage("Please enter a valid JMESPath expression.");
 			return Promise.resolve();
 		}

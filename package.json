@@ -56,6 +56,12 @@
       "title": "JMESPath: Query JSON",
       "command": "jmespath.query"
     }],
+    "keybindings": [{
+      "command": "jmespath.query",
+      "key": "ctrl+j ctrl+q",
+      "mac": "cmd+j cmd+q",
+      "when": "editorTextFocus"
+    }],
     "configuration": {
       "title": "",
       "properties": {

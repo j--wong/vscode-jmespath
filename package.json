@@ -3,7 +3,7 @@
   "displayName": "JMESPath for VSCode",
   "description": "Evaluate JMESPath queries within Visual Studio Code",
   "icon": "images/jmespath.png",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./out/src/jmespathMain",
   "scripts": {
     "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
@@ -58,8 +58,8 @@
     }],
     "keybindings": [{
       "command": "jmespath.query",
-      "key": "ctrl+j ctrl+q",
-      "mac": "cmd+j cmd+q",
+      "key": "ctrl+j q",
+      "mac": "cmd+j q",
       "when": "editorTextFocus"
     }],
     "configuration": {

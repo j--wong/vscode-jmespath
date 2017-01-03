@@ -13,7 +13,8 @@ export function queryJson(context: vscode.ExtensionContext, outputChannel: vscod
 
 	let options: vscode.InputBoxOptions = {
 		prompt: "Enter JMESPath expression",
-		placeHolder: "JMESPath expression"
+		placeHolder: "JMESPath expression",
+		validateInput: validateExpression
 	};
 
 	return vscode.window.showInputBox(options).then((expression) => {
@@ -22,14 +23,6 @@ export function queryJson(context: vscode.ExtensionContext, outputChannel: vscod
 		}
 		if (expression.trim().length === 0) {
 			vscode.window.showInformationMessage("Please enter a valid JMESPath expression.");
-			return Promise.resolve();
-		}
-
-		try {
-			jmespath.compile(expression);
-		}
-		catch (e) {
-			vscode.window.showErrorMessage(`${e.message}`);
 			return Promise.resolve();
 		}
 
@@ -46,4 +39,15 @@ export function queryJson(context: vscode.ExtensionContext, outputChannel: vscod
 			return Promise.resolve();
 		}
 	});
+}
+
+function validateExpression(expression: string) {
+	try {
+		jmespath.compile(expression);
+	}
+	catch (e) {
+		return e.message;
+	}
+
+	return "";
 }

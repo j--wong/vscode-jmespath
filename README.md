@@ -25,6 +25,11 @@ To use the extension:
 
 ## Release Notes
 
+### 0.0.5
+
+- Add live expression evaluation
+- Changed keyboard shortcut to `cmd+shift+j` / `ctrl+shift+j` as previous ones didn't work properly
+
 ### 0.0.4
 
 - Fix keyboard shortcut on Mac
@@ -41,5 +46,3 @@ To use the extension:
 ### 0.0.1
 
 - Initial release
-
-

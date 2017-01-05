@@ -37,7 +37,7 @@ describe("JMESPath extension", () => {
 			jmespathMain.activate(context);
 
 			expect(context.subscriptions).to.not.be.empty;
-			expect(context.subscriptions.length).to.equals(1);
+			expect(context.subscriptions.length).to.equals(3);
 		}));
 	});
 

@@ -7,7 +7,8 @@
   "main": "./out/src/jmespathMain",
   "scripts": {
     "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
-    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+    "compile": "node ./node_modules/vscode/bin/compile -p ./",
+    "compile:watch": "node ./node_modules/vscode/bin/compile -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "node ./node_modules/vscode/bin/test"
   },
@@ -53,20 +54,16 @@
     "onCommand:jmespath.query"
   ],
   "contributes": {
-    "commands": [
-      {
-        "title": "JMESPath: Query JSON",
-        "command": "jmespath.query"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "jmespath.query",
-        "key": "ctrl+shift+j",
-        "mac": "cmd+shift+j",
-        "when": "editorTextFocus && editorLangId == 'json'"
-      }
-    ],
+    "commands": [{
+      "title": "JMESPath: Query JSON",
+      "command": "jmespath.query"
+    }],
+    "keybindings": [{
+      "command": "jmespath.query",
+      "key": "ctrl+shift+j",
+      "mac": "cmd+shift+j",
+      "when": "editorTextFocus && editorLangId == 'json'"
+    }],
     "configuration": {
       "title": "",
       "properties": {

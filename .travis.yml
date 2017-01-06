@@ -3,3 +3,10 @@ sudo: false
 
 node_js:
   - "node"
+
+install:
+  - npm install
+  - npm run compile
+  - npm install -g vsce
+  - vsce package
+

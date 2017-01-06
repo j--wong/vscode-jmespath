@@ -1,12 +1,5 @@
 language: node_js
-sudo: false
+sudo: true
 
 node_js:
   - "node"
-
-install:
-  - npm install
-  - npm run compile
-  - npm install -g vsce
-  - vsce package
-

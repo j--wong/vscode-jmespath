@@ -25,10 +25,11 @@ export default class JMESPathQueryCommandHandler {
 		this.resultViewer = resultViewer || new OutputChannelResultViewer(Strings.UI_OUTPUT_CHANNEL_NAME, "  ");
 
 		let subscriptions: Array<vscode.Disposable>;
+
 		this.queryInputUi.onQueryExpressionChanged((expr) => {
-			clearTimeout(this.timeoutId);
-			this.timeoutId = setTimeout(this.queryAndDisplayResult(expr), 450);
+			this.queryAndDisplayResult(expr);
 		}, this, subscriptions);
+
 		this.disposable = vscode.Disposable.from(...subscriptions);
 	}
 

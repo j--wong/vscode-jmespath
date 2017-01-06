@@ -14,6 +14,7 @@
   "devDependencies": {
     "@types/chai": "^3.4.34",
     "@types/sinon": "^1.16.34",
+    "@types/yamljs": "^0.2.30",
     "chai": "^3.5.0",
     "sinon": "^1.17.7",
     "tslint": "^4.2.0",
@@ -21,7 +22,8 @@
     "vscode": "^0.11.0"
   },
   "dependencies": {
-    "jmespath": "^0.15.0"
+    "jmespath": "^0.15.0",
+    "yamljs": "^0.2.8"
   },
   "repository": {
     "type": "git",
@@ -51,16 +53,20 @@
     "onCommand:jmespath.query"
   ],
   "contributes": {
-    "commands": [{
-      "title": "JMESPath: Query JSON",
-      "command": "jmespath.query"
-    }],
-    "keybindings": [{
-      "command": "jmespath.query",
-      "key": "ctrl+shift+j",
-      "mac": "cmd+shift+j",
-      "when": "editorTextFocus && editorLangId == 'json'"
-    }],
+    "commands": [
+      {
+        "title": "JMESPath: Query JSON",
+        "command": "jmespath.query"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "jmespath.query",
+        "key": "ctrl+shift+j",
+        "mac": "cmd+shift+j",
+        "when": "editorTextFocus && editorLangId == 'json'"
+      }
+    ],
     "configuration": {
       "title": "",
       "properties": {

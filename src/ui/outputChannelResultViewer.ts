@@ -1,25 +1,46 @@
 "use strict";
 
 import * as vscode from "vscode";
+import { Uri, ViewColumn, Selection, Position } from "vscode";
+import * as fs from "fs";
+import * as os from "os";
+import * as path from "path";
 import { ResultViewer } from "./resultViewer";
+import JMESPathQueryCommandHandler from "./../command/jmespathQueryCommandHandler";
 
 export default class OutputChannelResultViewer implements ResultViewer {
-	private outputChannel: vscode.OutputChannel;
 	private indentString: string;
+	private resultsFilePath: string;
+	private resultsDoc: vscode.TextDocument;
 
 	constructor(channelName: string, indent: string = "  ") {
-		this.outputChannel = vscode.window.createOutputChannel(channelName);
 		this.indentString = indent;
-		this.outputChannel.show();
+		this.resultsFilePath = path.join(os.tmpdir(), "Query Results.json");
 	}
 
 	public viewResult(queryResult: any) {
-		this.outputChannel.clear();
-		this.outputChannel.appendLine(JSON.stringify(queryResult, null, this.indentString));
-		this.outputChannel.show();
+		fs.writeFileSync(this.resultsFilePath, "");
+		const resultsFileUri = Uri.file(this.resultsFilePath);
+		const resultsFileUri2 = Uri.file(path.join(os.tmpdir(), "Query Results2.json"));
+		if (this.resultsDoc)
+			this.resultsDoc.save();
+		fs.writeFileSync(this.resultsFilePath, JSON.stringify(queryResult, null, this.indentString));
+		vscode.workspace.openTextDocument(resultsFileUri).then(doc => {
+				this.resultsDoc = doc;
+				vscode.window.showTextDocument(doc, getViewColumn(), true);
+			}
+		);
 	}
 
 	public dispose() {
-		this.outputChannel.dispose();
+		fs.unlink(this.resultsFilePath);
 	}
+}
+
+function getViewColumn(): ViewColumn {
+	const activeEditor = vscode.window.activeTextEditor;
+	if (!activeEditor) {
+		return ViewColumn.One;
+	}
+	return activeEditor.viewColumn + 1;
 }

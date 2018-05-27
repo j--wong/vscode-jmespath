@@ -29,10 +29,11 @@ export default class QueryInput {
 	 * @param placeholder An optional string to show as place holder in the input box to guide the user what to type.
 	 * @return A string representing the user-entered expression
 	 */
-	public async presentInputBox(prompt: string, placeholder?: string): Promise<string> {
+	public async presentInputBox(prompt: string, placeholder?: string, defaultVal?: string): Promise<string> {
 		return vscode.window.showInputBox({
 			prompt: prompt,
 			placeHolder: placeholder,
+			value: defaultVal,
 			validateInput: (expr) => { return this.validateExpression(expr); }
 		});
 	}

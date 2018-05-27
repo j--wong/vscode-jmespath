@@ -12,6 +12,7 @@ export default class JMESPathQueryCommandHandler {
 
 	private extensionContext: vscode.ExtensionContext;
 	private queryInputUi: QueryInput;
+	private defaultExpression: string = "*";
 	private queryService: JMESPathQueryService;
 	private resultViewer: ResultViewer;
 	private timeoutId: number;
@@ -39,7 +40,8 @@ export default class JMESPathQueryCommandHandler {
 		}
 
 		try {
-			let expression = await this.queryInputUi.presentInputBox(Strings.UI_QUERY_PROMPT, Strings.UI_QUERY_PROMPT_PLACEHOLDER);
+			let expression = await this.queryInputUi.presentInputBox(Strings.UI_QUERY_PROMPT, Strings.UI_QUERY_PROMPT_PLACEHOLDER, this.defaultExpression);
+			this.defaultExpression = expression;
 			if (expression === undefined) {
 				return Promise.resolve();
 			}

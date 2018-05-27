@@ -65,6 +65,14 @@
       "mac": "cmd+shift+j",
       "when": "editorTextFocus && editorLangId == 'json'"
     }],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "jmespath.query",
+          "when": "editorLangId == json"
+        }
+      ]
+    },
     "configuration": {
       "title": "",
       "properties": {

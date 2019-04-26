@@ -1,9 +1,8 @@
 "use strict";
 
-import * as vscode from "vscode";
 import * as path from "path";
-import * as assert from "assert";
 import * as sinon from "sinon";
+import * as vscode from "vscode";
 import chai = require("chai");
 
 let expect = chai.expect;
@@ -51,7 +50,7 @@ xdescribe("jmespathQuery", () => {
 				},
 				appendLine: sandbox.stub(),
 				clear: sandbox.stub(),
-				show: sandbox.stub(),
+				show: <any>sandbox.stub(),
 				hide: sandbox.stub(),
 				dispose: sandbox.stub()
 			};

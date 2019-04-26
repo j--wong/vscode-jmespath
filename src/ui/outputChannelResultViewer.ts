@@ -10,13 +10,12 @@ export default class OutputChannelResultViewer implements ResultViewer {
 	constructor(channelName: string, indent: string = "  ") {
 		this.outputChannel = vscode.window.createOutputChannel(channelName);
 		this.indentString = indent;
-		this.outputChannel.show();
+		this.outputChannel.show(true);
 	}
 
 	public viewResult(queryResult: any) {
 		this.outputChannel.clear();
 		this.outputChannel.appendLine(JSON.stringify(queryResult, null, this.indentString));
-		this.outputChannel.show();
 	}
 
 	public dispose() {

@@ -1,10 +1,11 @@
+import * as sinon from "sinon";
+import * as sinonTest from "sinon-test";
 import * as vscode from "vscode";
 import * as jmespathMain from "../src/jmespathMain";
-import * as assert from "assert";
-import * as sinon from "sinon";
 import chai = require("chai");
 
 let expect = chai.expect;
+const test = sinonTest(sinon);
 
 describe("JMESPath extension", () => {
 	let extensionId = "joshwong.vscode-jmespath";
@@ -28,12 +29,12 @@ describe("JMESPath extension", () => {
 			stubTextEditorCommand.restore();
 		});
 
-		it("should register 'jmespath.query' command", sinon.test(() => {
+		it("should register 'jmespath.query' command", test(() => {
 			jmespathMain.activate(context);
 			expect(stubTextEditorCommand.calledWith("jmespath.query")).to.be.true;
 		}));
 
-		it("should add disposable command to subscriptions array", sinon.test(() => {
+		it("should add disposable command to subscriptions array", test(() => {
 			jmespathMain.activate(context);
 
 			expect(context.subscriptions).to.not.be.empty;

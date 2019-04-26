@@ -17,6 +17,10 @@ This extension lets you test JMESPath expressions from within Visual Studio Code
 
 ## Release Notes
 
+### 0.0.6
+
+- Fix issue with output console taking focus away from input box
+
 ### 0.0.5
 
 - Add live expression evaluation

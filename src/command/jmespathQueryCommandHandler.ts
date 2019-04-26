@@ -1,11 +1,11 @@
 "use strict";
 
 import * as vscode from "vscode";
-import QueryInput from "./../ui/queryInput";
-import Strings from "./../util/strings";
 import JMESPathQueryService from "./../service/jmespathQueryService";
-import { ResultViewer } from "./../ui/resultViewer";
 import OutputChannelResultViewer from "./../ui/outputChannelResultViewer";
+import QueryInput from "./../ui/queryInput";
+import { ResultViewer } from "./../ui/resultViewer";
+import Strings from "./../util/strings";
 
 export default class JMESPathQueryCommandHandler {
 	public static COMMAND_NAME = "jmespath.query";
@@ -24,7 +24,7 @@ export default class JMESPathQueryCommandHandler {
 		this.queryService = new JMESPathQueryService(context);
 		this.resultViewer = resultViewer || new OutputChannelResultViewer(Strings.UI_OUTPUT_CHANNEL_NAME, "  ");
 
-		let subscriptions: Array<vscode.Disposable>;
+		let subscriptions: Array<vscode.Disposable> = [];
 
 		this.queryInputUi.onQueryExpressionChanged((expr) => {
 			this.queryAndDisplayResult(expr);

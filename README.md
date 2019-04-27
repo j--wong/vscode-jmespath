@@ -1,5 +1,9 @@
 # JMESPath for Visual Studio Code
 
+[![Build Status](https://travis-ci.org/j--wong/vscode-jmespath.svg?branch=master)](https://travis-ci.org/j--wong/vscode-jmespath)
+[![Version](http://vsmarketplacebadge.apphb.com/version/joshwong.vscode-jmespath.svg)](https://marketplace.visualstudio.com/items?itemName=joshwong.vscode-jmespath)
+[![Installs](http://vsmarketplacebadge.apphb.com/installs/joshwong.vscode-jmespath.svg)](https://marketplace.visualstudio.com/items?itemName=joshwong.vscode-jmespath)
+
 JMESPath is a query language for JSON. For more information about JMESPath, please visit [here](http://jmespath.org)
 
 This extension lets you test JMESPath expressions from within Visual Studio Code.
